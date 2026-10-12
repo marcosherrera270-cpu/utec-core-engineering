@@ -1,4 +1,4 @@
 #!/usr/bin/env python3
 for i in range(97, 123):
     if i != 101 and i != 113:
-        print("{:c}".format(i), end="" if i != 122 else "\n")
+        print("{:c}".format(i), end="")
