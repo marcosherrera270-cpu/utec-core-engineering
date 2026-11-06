@@ -9,7 +9,7 @@ class HangmanGame:
         progress = []
 
         for letter in self.word:
-            if letter in self.guessed_letters:
+            if not letter.isalpha() or letter in self.guessed_letters:
                 progress.append(letter)
             else:
                 progress.append("_")
