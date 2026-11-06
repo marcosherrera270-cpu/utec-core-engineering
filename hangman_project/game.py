@@ -14,7 +14,18 @@ class HangmanGame:
             else:
                 progress.append("_")
 
-        print(" ".join(progress))
+        print("Progreso:", " ".join(progress))
+        print("Letras adivinadas:", ", ".join(self.guessed_letters))
+        print("Intentos restantes:", self.max_errors - self.errors)
+
+    def process_guess(self, letter):
+        if letter in self.word:
+            self.guessed_letters.append(letter)
+            return True
+        else:
+            self.errors += 1
+            return False
+
     def process_guess(self, letter):
         if letter in self.word:
             self.guessed_letters.append(letter)
