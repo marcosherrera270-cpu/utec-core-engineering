@@ -1,3 +1,7 @@
+from game import HangmanGame
+from utils import get_random_word
+
+
 def get_valid_guess(guessed_letters):
     while True:
         guess = input("Ingresa una letra: ").strip().lower()
@@ -10,8 +14,27 @@ def get_valid_guess(guessed_letters):
             return guess
 
 
-if __name__ == "__main__":
-    guessed_letters = []
+def main():
+    word = get_random_word()
+    game = HangmanGame(word)
 
-    letter = get_valid_guess(guessed_letters)
-    print("Letra válida:", letter)
+    print("¡Bienvenido al juego Hangman!")
+
+    while not game.is_won() and not game.is_lost():
+        game.display_progress()
+
+        letter = get_valid_guess(game.guessed_letters)
+
+        if game.process_guess(letter):
+            print("¡Correcto!")
+        else:
+            print("Letra incorrecta.")
+
+    if game.is_won():
+        print("¡Felicidades! ¡Ganaste!")
+    else:
+        print("¡Perdiste! La palabra era:", word)
+
+
+if __name__ == "__main__":
+    main()
